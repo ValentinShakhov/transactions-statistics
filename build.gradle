@@ -1,0 +1,35 @@
+buildscript {
+    ext {
+        springBootVersion = "2.0.3.RELEASE"
+    }
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "io.franzbecker:gradle-lombok:1.14"
+    }
+}
+
+apply plugin: "java"
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
+apply plugin: "io.franzbecker.gradle-lombok"
+
+group = "com.n26.statistics"
+version = "1.0"
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def mockitoVersion = "2.18.3"
+
+    compile "org.springframework.boot:spring-boot-starter-web"
+
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+    testCompile "org.mockito:mockito-core:${mockitoVersion}"
+}
